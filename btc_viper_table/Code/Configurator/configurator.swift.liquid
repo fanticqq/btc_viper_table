@@ -6,11 +6,9 @@
 //  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
 //
 
-import UIKit
-
 class {{ module_info.name }}ModuleConfigurator {
 
-    func configure(viewController: {{ module_info.name }}ViewController) {
+    func configure(viewController: {{ module_info.name }}ViewController) -> (input: {{ module_info.name }}ModuleInput, output: {{ module_info.name }}ModuleOutput) {
 
         let presenter = {{ module_info.name }}Presenter()
         presenter.view = viewController
@@ -20,5 +18,8 @@ class {{ module_info.name }}ModuleConfigurator {
 
         presenter.interactor = interactor
         viewController.output = presenter
+        
+        return (presenter, presenter)
     }
 }
+
