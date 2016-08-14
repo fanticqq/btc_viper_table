@@ -1,0 +1,57 @@
+//
+//  {{ module_info.name }}{{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import UIKit
+
+class {{ module_info.name }}TableAdapter: NSObject {
+
+    private let _tableView: UITableView
+    
+    init(tableView: UITableView) {
+        _tableView = tableView
+        super.init()
+        _tableView.delegate = self
+        _tabelView.dataSource = self
+    }
+    
+}
+
+//MARK: UITableViewDataSourse
+extension {{ module_info.name }}TableAdapter: UITableViewDataSourse {
+
+    func tableView(tableView: UITableView,
+                   numberOfRowsInSection section: Int) -> Int
+    {
+        return 0
+    }
+    
+    func tableView(tableView: UITableView,
+                   cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    {
+        let cell = tableView.dequeueReusableCellWithIdentifier(String(UITableViewCell),
+                                                               forIndexPath: indexPath) as! UITableViewCell
+
+        return cell        
+    }
+}
+
+//MARK: UITableViewDelegate
+extension {{ module_info.name }}TableAdapter: UITableViewDelegate {
+
+    func tableView(tableView: UITableView,
+                   didSelectRowAtIndexPath indexPath: NSIndexPath)
+    {
+        
+    }
+    
+    func tableView(tableView: UITableView,
+                   titleForHeaderInSection section: Int) -> String?
+    {
+        return ""
+    }
+}
