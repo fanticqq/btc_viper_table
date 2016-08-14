@@ -6,7 +6,7 @@
 //  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
 //
 
-class {{ module_info.name }}Presenter: {{ module_info.name }}ModuleInput, {{ module_info.name }}ModuleOutput, {{ module_info.name }}ViewOutput, {{ module_info.name }}InteractorOutput {
+class {{ module_info.name }}Presenter: {{ module_info.name }}ModuleOutput {
 
     weak var view: {{ module_info.name }}ViewInput!
     var interactor: {{ module_info.name }}InteractorInput!
@@ -14,4 +14,19 @@ class {{ module_info.name }}Presenter: {{ module_info.name }}ModuleInput, {{ mod
     func viewIsReady() {
 
     }
+}
+
+// MARK: {{ module_info.name }}ModuleInput
+extension {{ module_info.name }}Presenter: {{ module_info.name }}ModuleInput {
+  
+}
+
+// MARK:  {{ module_info.name }}ViewOutput
+extension {{ module_info.name }}Presenter:  {{ module_info.name }}ViewOutput {
+  
+}
+
+// MARK: {{ module_info.name }}InteractorOutput
+extension {{ module_info.name }}Presenter: {{ module_info.name }}InteractorOutput{
+  
 }
