@@ -17,7 +17,6 @@ class {{ module_info.name }}ViewController: UIViewController, {{module_info.name
     var output: {{ module_info.name }}ViewOutput!
     
     var tableView: UITableView {
-    
         return _tableViewController.tableView  
     }
     
@@ -41,29 +40,20 @@ extension {{ module_info.name }}ViewController {
   
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.whiteColor()
         addChildViewController(_tableViewController)
-        _tableViewController.willMoveToParentViewController(self)
-        view.addSubview(_tableViewController.view)
-        _tableViewController.didMoveToParentViewController(self)
-        view.setNeedsUpdateConstraints()
         output.viewIsReady()
     }
 
     override func updateViewConstraints() {
-        
         if !_didSetupConstraints {
-            
             _tableViewController.view.snp_makeConstraints(closure: { (make) in
                 make.left.equalTo(view.snp_left)
                 make.right.equalTo(view.snp_right)
                 make.top.equalTo(self.snp_topLayoutGuideBottom)
                 make.bottom.equalTo(self.snp_bottomLayoutGuideTop)
             })
-            
             _didSetupConstraints = true
         }
-        
         super.updateViewConstraints()
     }
 }
@@ -72,7 +62,11 @@ extension {{ module_info.name }}ViewController {
 extension {{ module_info.name }}ViewController {
   
     func setupInitialState() {
-        
+        self.view.backgroundColor = UIColor.whiteColor()
+        _tableViewController.willMoveToParentViewController(self)
+        view.addSubview(_tableViewController.view)
+        _tableViewController.didMoveToParentViewController(self)
+        view.setNeedsUpdateConstraints()
     }
 }
 

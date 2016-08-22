@@ -6,10 +6,15 @@
 //  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
 //
 
-class {{ module_info.name }}ModuleConfigurator {
+import UIKit
 
-    func configure(viewController: {{ module_info.name }}ViewController) -> (input: {{ module_info.name }}ModuleInput, output: {{ module_info.name }}ModuleOutput) {
+    typealias {{ module_info.name }}ModuleBox = (viewController: {{ module_info.name }}ViewController, input: {{ module_info.name }}ModuleInput, output: {{ module_info.name }}ModuleOutput)
 
+class {{ module_info.name }}Builder {
+
+    func createModule() -> {{ module_info.name }}ModuleBox {
+        let viewController = {{ module_info.name }}ViewController()
+        
         let presenter = {{ module_info.name }}Presenter()
         presenter.view = viewController
 
@@ -19,7 +24,6 @@ class {{ module_info.name }}ModuleConfigurator {
         presenter.interactor = interactor
         viewController.output = presenter
         
-        return (presenter, presenter)
+        return (viewController, presenter, presenter)
     }
 }
-
