@@ -13,7 +13,7 @@ import UIKit
 class {{ module_info.name }}Builder {
 
     func createModule() -> {{ module_info.name }}ModuleBox {
-        let viewController = {{ module_info.name }}ViewController()
+        let viewController = {{ module_info.name }}ViewController(style: .Grouped)
         
         let presenter = {{ module_info.name }}Presenter()
         presenter.view = viewController
