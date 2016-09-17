@@ -1,5 +1,5 @@
 //
-//  {{ module_info.name }}{{ module_info.file_name }}
+//  {{ module_info.file_name }}
 //  {{ module_info.project_name }}
 //
 //  Created by {{ developer.name }} on {{ date }}.
@@ -10,22 +10,22 @@ import UIKit
 
 class {{ module_info.name }}ViewController: UIViewController, {{module_info.name}}ViewInput {
 
-    private var _didSetupConstraints = false
-    private let _tableViewController: TableViewController
-    private let _tableAdapter:{{ module_info.name }}TableAdapter
+    private var didSetupConstraints = false
+    private let tableViewController: UITableViewController
+    private let tableAdapter: TableAdapter
     
     var output: {{ module_info.name }}ViewOutput!
     
     var tableView: UITableView {
-        return _tableViewController.tableView  
+        return self.tableViewController.tableView  
     }
     
     init(style: UITableViewStyle)
     {
-        _tableViewController = TableViewController(style: style)
-        _tableAdapter = {{ module_info.name }}TableAdapter(tableView: _tableViewController.tableView)
+        self.tableViewController = TableViewController(style: style)
+        self.tableAdapter = TableAdapter(tableView: tableViewController.tableView)
         super.init(nibName: nil, bundle: nil)
-        automaticallyAdjustsScrollViewInsets = false
+        self.automaticallyAdjustsScrollViewInsets = false
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -40,19 +40,19 @@ extension {{ module_info.name }}ViewController {
   
     override func viewDidLoad() {
         super.viewDidLoad()
-        addChildViewController(_tableViewController)
-        output.viewIsReady()
+        self.addChildViewController(self.tableViewController)
+        self.output.viewIsReady()
     }
 
     override func updateViewConstraints() {
-        if !_didSetupConstraints {
-            _tableViewController.view.snp_makeConstraints(closure: { (make) in
-                make.left.equalTo(view.snp_left)
-                make.right.equalTo(view.snp_right)
-                make.top.equalTo(self.snp_topLayoutGuideBottom)
-                make.bottom.equalTo(self.snp_bottomLayoutGuideTop)
+        if !self.didSetupConstraints {
+            self.tableViewController.view.snp_makeConstraints(closure: { (make) in
+                make.left.equalTo(view.snp.left)
+                make.right.equalTo(view.snp.right)
+                make.top.equalTo(self.topLayoutGuide.snp.bottom)
+                make.bottom.equalTo(self.bottomLayoutGuide.snp.top)
             })
-            _didSetupConstraints = true
+            self.didSetupConstraints = true
         }
         super.updateViewConstraints()
     }
@@ -63,10 +63,10 @@ extension {{ module_info.name }}ViewController {
   
     func setupInitialState() {
         self.view.backgroundColor = UIColor.whiteColor()
-        _tableViewController.willMoveToParentViewController(self)
-        view.addSubview(_tableViewController.view)
-        _tableViewController.didMoveToParentViewController(self)
-        view.setNeedsUpdateConstraints()
+        self.tableViewController.willMoveToParentViewController(self)
+        self.view.addSubview(self.tableViewController.view)
+        self.tableViewController.didMoveToParentViewController(self)
+        self.view.setNeedsUpdateConstraints()
     }
 }
 
