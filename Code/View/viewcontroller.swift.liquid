@@ -46,7 +46,7 @@ extension {{ module_info.name }}ViewController {
 
     override func updateViewConstraints() {
         if !self.didSetupConstraints {
-            self.tableViewController.view.snp_makeConstraints(closure: { (make) in
+            self.tableViewController.view.snp_makeConstraints( { (make) in
                 make.left.equalTo(view.snp.left)
                 make.right.equalTo(view.snp.right)
                 make.top.equalTo(self.topLayoutGuide.snp.bottom)
@@ -62,11 +62,11 @@ extension {{ module_info.name }}ViewController {
 extension {{ module_info.name }}ViewController {
   
     func setupInitialState() {
-        self.view.backgroundColor = UIColor.whiteColor()
-        self.tableViewController.willMoveToParentViewController(self)
-        self.view.addSubview(self.tableViewController.view)
-        self.tableViewController.didMoveToParentViewController(self)
-        self.view.setNeedsUpdateConstraints()
+        self.view.backgroundColor = UIColor.white
+        self.tableViewController.willMove(toParentViewController: self)
+        view.addSubview(self.tableViewController.view)
+        self.tableViewController.didMove(toParentViewController: self)
+        view.setNeedsUpdateConstraints()
     }
 }
 
