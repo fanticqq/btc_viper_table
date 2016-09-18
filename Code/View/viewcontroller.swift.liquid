@@ -10,9 +10,9 @@ import UIKit
 
 class {{ module_info.name }}ViewController: UIViewController, {{module_info.name}}ViewInput {
 
-    private var didSetupConstraints = false
-    private let tableViewController: UITableViewController
-    private let tableAdapter: TableAdapter
+    fileprivate var didSetupConstraints = false
+    fileprivate let tableViewController: UITableViewController
+    fileprivate let tableAdapter: TableAdapter
     
     var output: {{ module_info.name }}ViewOutput!
     
