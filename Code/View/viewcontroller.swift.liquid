@@ -22,7 +22,7 @@ class {{ module_info.name }}ViewController: UIViewController, {{module_info.name
     
     init(style: UITableViewStyle)
     {
-        self.tableViewController = TableViewController(style: style)
+        self.tableViewController = UITableViewController(style: style)
         self.tableAdapter = TableAdapter(tableView: tableViewController.tableView)
         super.init(nibName: nil, bundle: nil)
         self.automaticallyAdjustsScrollViewInsets = false
