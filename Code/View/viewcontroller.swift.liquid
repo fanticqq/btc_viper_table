@@ -46,7 +46,7 @@ extension {{ module_info.name }}ViewController {
 
     override func updateViewConstraints() {
         if !self.didSetupConstraints {
-            self.tableViewController.view.snp_makeConstraints( { (make) in
+            self.tableViewController.view.snp.makeConstraints( { (make) in
                 make.left.equalTo(view.snp.left)
                 make.right.equalTo(view.snp.right)
                 make.top.equalTo(self.topLayoutGuide.snp.bottom)
