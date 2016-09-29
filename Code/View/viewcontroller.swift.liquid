@@ -8,7 +8,7 @@
 
 import UIKit
 
-class {{ module_info.name }}ViewController: UIViewController, {{module_info.name}}ViewInput {
+class {{ module_info.name }}ViewController: PSViewController, {{module_info.name}}ViewInput {
 
     fileprivate var didSetupConstraints = false
     fileprivate let tableViewController: UITableViewController
@@ -40,6 +40,7 @@ extension {{ module_info.name }}ViewController {
   
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableViewController.willMove(toParentViewController: self)
         self.addChildViewController(self.tableViewController)
         self.output.viewIsReady()
     }
@@ -62,8 +63,6 @@ extension {{ module_info.name }}ViewController {
 extension {{ module_info.name }}ViewController {
   
     func setupInitialState() {
-        self.view.backgroundColor = UIColor.white
-        self.tableViewController.willMove(toParentViewController: self)
         view.addSubview(self.tableViewController.view)
         self.tableViewController.didMove(toParentViewController: self)
         view.setNeedsUpdateConstraints()
