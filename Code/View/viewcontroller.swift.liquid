@@ -63,14 +63,24 @@ extension {{ module_info.name }}ViewController {
 extension {{ module_info.name }}ViewController {
   
     func setupInitialState() {
-        view.addSubview(self.tableViewController.view)
+    	self.setupTableView()
+        self.view.addSubview(self.tableViewController.view)
         self.tableViewController.didMove(toParentViewController: self)
-        view.setNeedsUpdateConstraints()
+        self.view.setNeedsUpdateConstraints()
     }
 }
 
+// MARK: Configure
+private extension {{ module_info.name }}ViewController {
+
+	func setupTableView() {
+
+	}
+}
+
+
 // MARK: Actions
-extension {{ module_info.name }}ViewController {
+private extension {{ module_info.name }}ViewController {
 
 }
 
