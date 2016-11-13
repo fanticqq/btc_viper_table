@@ -13,7 +13,8 @@ typealias {{ module_info.name }}ModuleBox = (viewController: {{ module_info.name
 class {{ module_info.name }}Builder {
 
     func createModule() -> {{ module_info.name }}ModuleBox {
-        let viewController = {{ module_info.name }}ViewController(style: .grouped)
+        let dataDisplayManager = {module_info.name}}DataDisplayManager()
+        let viewController = {{ module_info.name }}ViewController(style: .grouped, datadisplayManager: datadisplayManager)
         
         let presenter = {{ module_info.name }}Presenter()
         presenter.view = viewController
