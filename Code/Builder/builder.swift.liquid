@@ -14,7 +14,7 @@ class {{ module_info.name }}Builder {
 
     func createModule() -> {{ module_info.name }}ModuleBox {
         let dataDisplayManager = {{ module_info.name }}DataDisplayManager()
-        let viewController = {{ module_info.name }}ViewController(style: .grouped, datadisplayManager: datadisplayManager)
+        let viewController = {{ module_info.name }}ViewController(style: .grouped, dataDisplayManager: dataDisplayManager)
         
         let presenter = {{ module_info.name }}Presenter()
         presenter.view = viewController
