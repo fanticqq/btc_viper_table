@@ -49,8 +49,8 @@ class {{ module_info.name }}ViewController: PSViewController, {{module_info.name
             self.tableViewController.view.snp.makeConstraints( { (make) in
                 make.left.equalTo(view.snp.left)
                 make.right.equalTo(view.snp.right)
-                make.top.equalToSuperview()
-                make.bottom.equalToSuperview()
+                make.top.equalTo(self.topLayoutGuide.snp.bottom)
+                make.bottom.equalTo(self.bottomLayoutGuide.snp.top)
             })
             self.didSetupConstraints = true
         }
