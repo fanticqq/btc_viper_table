@@ -15,7 +15,7 @@ class {{ module_info.name }}Presenter: {{ module_info.name }}ModuleOutput {
 
     weak var view: {{ module_info.name }}ViewInput!
     var interactor: {{ module_info.name }}InteractorInput!
-    var state = {{ module_info.name }}State()
+    fileprivate var state = {{ module_info.name }}State()
 }
 
 // MARK: {{ module_info.name }}ModuleInput
