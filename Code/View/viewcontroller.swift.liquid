@@ -9,12 +9,11 @@
 import UIKit
 import SnapKit
 
-class {{ module_info.name }}ViewController: PSViewController, {{module_info.name}}ViewInput {
+final class {{ module_info.name }}ViewController: PSViewController, {{module_info.name}}ViewInput {
 
     fileprivate var didSetupConstraints = false
     fileprivate let tableViewController: UITableViewController
-    fileprivate let tableAdapter: TableAdapter
-    fileprivate let dataDisplayManager: {{module_info.name}}DataDisplayManager
+    var tableAdapter: TableAdapter
 
     var output: {{ module_info.name }}ViewOutput!
     
@@ -22,9 +21,8 @@ class {{ module_info.name }}ViewController: PSViewController, {{module_info.name
         return self.tableViewController.tableView  
     }
     
-    init(style: UITableViewStyle, dataDisplayManager: {{module_info.name}}DataDisplayManager)
+    init(style: UITableViewStyle)
     {
-        self.dataDisplayManager = dataDisplayManager
         self.tableViewController = UITableViewController(style: style)
         self.tableAdapter = TableAdapter(tableView: tableViewController.tableView)
         super.init(nibName: nil, bundle: nil)
@@ -62,7 +60,6 @@ class {{ module_info.name }}ViewController: PSViewController, {{module_info.name
   
     func setupInitialState() {
     	self.setupTableView()
-        self.setupDataDisplayManager()
         self.view.addSubview(self.tableViewController.view)
         self.tableViewController.didMove(toParentViewController: self)
         self.view.setNeedsUpdateConstraints()
@@ -76,16 +73,9 @@ private extension {{ module_info.name }}ViewController {
         self.tableView.separatorStyle = .none
         self.tableView.backgroundColor = UIColor(named: .background)
 	}
-
-    func setupDataDisplayManager() {
-
-    }
 }
-
 
 // MARK: Actions
 private extension {{ module_info.name }}ViewController {
 
 }
-
-

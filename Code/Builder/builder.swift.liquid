@@ -10,13 +10,13 @@ import UIKit
 
 typealias {{ module_info.name }}ModuleBox = (viewController: {{ module_info.name }}ViewController, input: {{ module_info.name }}ModuleInput, output: {{ module_info.name }}ModuleOutput)
 
-class {{ module_info.name }}Builder {
+final class {{ module_info.name }}Builder {
 
     func createModule() -> {{ module_info.name }}ModuleBox {
-        let dataDisplayManager = {{ module_info.name }}DataDisplayManager()
-        let viewController = {{ module_info.name }}ViewController(style: .grouped, dataDisplayManager: dataDisplayManager)
+        let viewModelBuilder = {{ module_info.name }}ViewModelBuilder()
+        let viewController = {{ module_info.name }}ViewController(style: .grouped)
         
-        let presenter = {{ module_info.name }}Presenter()
+        let presenter = {{ module_info.name }}Presenter(viewModelBuilder: viewModelBuilder)
         presenter.view = viewController
 
         let interactor = {{ module_info.name }}Interactor()
