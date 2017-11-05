@@ -17,7 +17,7 @@ code_files:
 - {name: Presenter/ModuleInput.swift, path: Code/Presenter/module_input.swift.liquid}
 - {name: Presenter/ModuleOutput.swift, path: Code/Presenter/module_output.swift.liquid}
 - {name: Presenter/Presenter.swift, path: Code/Presenter/presenter.swift.liquid}
-- {name: Presenter/ViewModelBuilder.swift, path: Code/View/viewmodel_builder.swift.liquid}
+- {name: Presenter/ViewModelBuilder.swift, path: Code/Presenter/viewmodel_builder.swift.liquid}
 
 # Interactor layer
 - {name: Interactor/InteractorInput.swift, path: Code/Interactor/interactor_input.swift.liquid}
