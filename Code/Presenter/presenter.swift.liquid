@@ -6,16 +6,15 @@
 //  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
 //
 
-
-private struct {{ module_info.name }}State {
-	var isViewReady: Bool = false
-}
-
-class {{ module_info.name }}Presenter: {{ module_info.name }}ModuleOutput {
+final class {{ module_info.name }}Presenter: {{ module_info.name }}ModuleOutput {
 
     weak var view: {{ module_info.name }}ViewInput!
     var interactor: {{ module_info.name }}InteractorInput!
-    fileprivate var state = {{ module_info.name }}State()
+    fileprivate let viewModelBuilder: {{ module_info.name }}ViewModelBuilder
+
+    init(viewModelBuilder: {{ module_info.name }}ViewModelBuilder) {
+        self.viewModelBuilder = viewModelBuilder
+    }
 }
 
 // MARK: {{ module_info.name }}ModuleInput
@@ -26,7 +25,6 @@ extension {{ module_info.name }}Presenter: {{ module_info.name }}ModuleInput {
 // MARK: {{ module_info.name }}ViewOutput
 extension {{ module_info.name }}Presenter:  {{ module_info.name }}ViewOutput {
     func viewIsReady() {
-    	self.state.isViewReady = true
         self.view.setupInitialState()
     }
 }
