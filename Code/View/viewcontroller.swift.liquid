@@ -26,7 +26,11 @@ final class {{ module_info.name }}ViewController: PSViewController, {{module_inf
         self.tableViewController = UITableViewController(style: style)
         self.tableAdapter = TableAdapter(tableView: tableViewController.tableView)
         super.init(nibName: nil, bundle: nil)
-        self.automaticallyAdjustsScrollViewInsets = false
+        if #available(iOS 11.0, *) {
+            self.tableView.contentInsetAdjustmentBehavior = .never
+        } else {
+            self.automaticallyAdjustsScrollViewInsets = false
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
